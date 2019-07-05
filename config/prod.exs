@@ -11,8 +11,6 @@ aws = System.find_executable("aws")
 cond do
   is_nil(app) ->
     raise "APPLICATION_NAME is unset!"
-  is_nil(env) ->
-    raise "ENVIRONMENT_NAME is unset!"
   is_nil(aws) ->
     raise "Unable to find `aws` executable!"
   :else ->
