@@ -4,11 +4,11 @@ defmodule Example.Application do
   def start(_type, _args) do
     import Supervisor.Spec
 
-#    children = [
-#      supervisor(Cluster.Supervisor, [topologies, [name: Example.ClusterSupervisor]]),
-#      supervisor(Example.Database, []),
-#      supervisor(ExampleWeb.Endpoint, []),
-#    ]
+    #    children = [
+    #      supervisor(Cluster.Supervisor, [topologies, [name: Example.ClusterSupervisor]]),
+    #      supervisor(Example.Database, []),
+    #      supervisor(ExampleWeb.Endpoint, []),
+    #    ]
 
     children = [
       # Start the Ecto repository
