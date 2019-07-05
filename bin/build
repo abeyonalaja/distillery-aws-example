@@ -6,7 +6,7 @@ if [ ! -z "$BUILD_DIR" ]; then
     cd "$BUILD_DIR" || exit 1
 fi
 
-ERL_VERSION="21.0"
+ERL_VERSION="21.1.1"
 ELIXIR_VERSION="1.7.1"
 
 export LANG=en_US.UTF-8
@@ -37,8 +37,10 @@ function do_install(){
     yum install -y -q unixODBC-devel || exit 1
 
     echo "==> Installing Erlang ${ERL_VERSION}.."
-    wget --no-verbose -P /tmp/ "https://packages.erlang-solutions.com/erlang/esl-erlang/FLAVOUR_1_general/esl-erlang_${ERL_VERSION}-1~centos~7_amd64.rpm"
-    rpm -Uvh "/tmp/esl-erlang_${ERL_VERSION}-1~centos~7_amd64.rpm"
+    wget http://packages.erlang-solutions.com/erlang-solutions-1.0-1.noarch.rpm
+       rpm -Uvh erlang-solutions-1.0-1.noarch.rpm
+       yum update
+       yum install erlang -y
 
     echo "==> Installing Elixir ${ELIXIR_VERSION}"
     wget --no-verbose -P /tmp/ "https://github.com/elixir-lang/elixir/releases/download/v${ELIXIR_VERSION}/Precompiled.zip"
