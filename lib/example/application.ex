@@ -4,12 +4,21 @@ defmodule Example.Application do
   def start(_type, _args) do
     import Supervisor.Spec
 
-    children = [
-      supervisor(Cluster.Supervisor, [topologies, [name: Example.ClusterSupervisor]]),
-      supervisor(Example.Database, []),
-      supervisor(ExampleWeb.Endpoint, []),
-    ]
-
+#    children = [
+#      supervisor(Cluster.Supervisor, [topologies, [name: Example.ClusterSupervisor]]),
+#      supervisor(Example.Database, []),
+#      supervisor(ExampleWeb.Endpoint, []),
+#    ]
+    def start(_type, _args) do
+      # List all child processes to be supervised
+      children = [
+        # Start the Ecto repository
+        Example.Repo,
+        # Start the endpoint when the application starts
+        ExampleWeb.Endpoint
+        # Starts a worker by calling: Fawxs.Worker.start_link(arg)
+        # {Fawxs.Worker, arg},
+      ]
     opts = [strategy: :one_for_one, name: Example.Supervisor]
     Supervisor.start_link(children, opts)
   end
