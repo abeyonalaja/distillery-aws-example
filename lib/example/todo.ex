@@ -4,11 +4,7 @@ defmodule Example.Todo do
   schema "todos" do
     field(:title, :string)
     field(:completed, :boolean)
-
-    timestamps(
-      type: :naive_datetime,
-      autogenerate: {NaiveDateTime, :utc_now, []}
-    )
+    timestamps()
   end
 
   @doc """

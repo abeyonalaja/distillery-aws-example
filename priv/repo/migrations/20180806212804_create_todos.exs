@@ -6,7 +6,7 @@ defmodule Example.Repo.Migrations.CreateTodos do
       add(:title, :string)
       add(:completed, :boolean)
 
-      timestamps()
+      timestamps(type: :naive_datetime)
     end
   end
 end
